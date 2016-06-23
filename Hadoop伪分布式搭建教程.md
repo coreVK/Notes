@@ -5,7 +5,8 @@ __版本：1.0.7__
 __环境：`Ubuntu 16.04 LTS AMD64(64Bit)` 、`OpenJDK-9`、`Hadoop-1.2.1`、`SSH`__
 
 
-##0. 请使用root进行所有操作
+##0. 注意
+由于教程中多处需要使用root权限，建议初次搭建直接使用root。
 
 ## 1. JAVA安装及配置长度
 
@@ -188,6 +189,7 @@ SHUTDOWN_MSG: Shutting down NameNode at mike-virtual-machine/127.0.1.1
 
 ```bash
 > cd /usr/lib/jvm/java-9-openjdk-amd64
+> touch conf
 > ln -s lib conf
 > ls -la conf
  lrwxrwxrwx 1 root root 3 6月  16 17:24 conf -> lib
@@ -210,9 +212,7 @@ export HADOOP_HOME_WARN_SUPPRESS=1
 > ssh-agent  #启动ssh-agent
 > apt-get install openssh-server
 ```
-
 ssh配置
-
 
 ```bash
 > cd /etc/ssh/ssh_config
@@ -251,7 +251,7 @@ root@localhost's password:
 localhost: 
 localhost: starting tasktracker, logging to /opt/hadoop-1.2.1/libexec/../logs/hadoop-root-tasktracker-mike-virtual-machine.out
 
-> jps
+> jps  # 看见以下服务启动表示Hadoop已经启动
  2531 DataNode
  2524 NameNode
  2678 SecondaryNameNode
